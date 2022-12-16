@@ -16,6 +16,7 @@ import com.example.studentlist.model.DataModel;
 import com.example.studentlist.model.Student;
 
 public class StudentDetailsActivity extends Activity {
+    private Student st;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -27,10 +28,18 @@ public class StudentDetailsActivity extends Activity {
         Bundle b = getIntent().getExtras();
         int pos = b.getInt("pos");
 
-        Student st = DataModel.instance().getStudentByPos(pos);
-
+        st = DataModel.instance().getStudentByPos(pos);
+        refreshDisplay();
         Button editButton = findViewById(R.id.editButton);
+        editButton.setOnClickListener(view -> {
+            Intent intent = new Intent(StudentDetailsActivity.this, EditStudentActivity.class);
+            intent.putExtras(b);
+            startActivity(intent);
+            finish();
+        });
+    }
 
+    private void refreshDisplay(){
         TextView nameTv = findViewById(R.id.nameTextView);
         TextView idTv = findViewById(R.id.idTextView);
         TextView phoneTv = findViewById(R.id.phoneTextView);
@@ -45,12 +54,14 @@ public class StudentDetailsActivity extends Activity {
         addressTv.setText("address: " + st.address);
         cb.setChecked(st.cb);
         cb.setEnabled(false);
+    }
 
-        editButton.setOnClickListener(view -> {
-            Intent intent = new Intent(StudentDetailsActivity.this, EditStudentActivity.class);
-            intent.putExtras(b);
-            startActivity(intent);
-            finish();
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Bundle b = getIntent().getExtras();
+        int pos = b.getInt("pos");
+        st = DataModel.instance().getStudentByPos(pos);
+        refreshDisplay();
     }
 }

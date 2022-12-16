@@ -34,4 +34,8 @@ public class DataModel {
     public void deleteStudent(int pos) {
         data.remove(pos);
     }
+
+    public void setStudent(int pos,Student newStudent) {
+        data.set(pos,newStudent);
+    }
 }

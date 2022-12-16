@@ -44,24 +44,24 @@ public class EditStudentActivity  extends Activity {
         addressTv.setText(st.address);
         cb.setChecked(st.cb);
 
-
         cancelButton.setOnClickListener(view -> {
             Intent intent = new Intent(EditStudentActivity.this, StudentDetailsActivity.class);
             intent.putExtras(b);
             startActivity(intent);
             finish();
         });
+
         deleteButton.setOnClickListener(view -> {
             DataModel.instance().deleteStudent(pos);
             finish();
         });
+
         saveButton.setOnClickListener(view -> {
+            DataModel.instance().setStudent(pos,new Student(nameTv.getText().toString(),idTv.getText().toString(),"",cb.isChecked(),phoneTv.getText().toString(),addressTv.getText().toString()));
             Intent intent = new Intent(EditStudentActivity.this, StudentDetailsActivity.class);
             intent.putExtras(b);
             startActivity(intent);
             finish();
         });
-
-
     }
 }
