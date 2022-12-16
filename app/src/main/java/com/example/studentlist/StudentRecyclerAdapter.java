@@ -63,7 +63,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
         this.data = data;
     }
 
-    void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
     @NonNull

@@ -1,29 +1,28 @@
-package com.example.studentlist;
+package com.example.studentlist.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.studentlist.R;
+import com.example.studentlist.StudentRecyclerAdapter;
 import com.example.studentlist.model.DataModel;
 import com.example.studentlist.model.Student;
 
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class StudentListActivity extends Activity {
 
     List<Student> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.student_list);
 
         data = DataModel.instance().getAllStudents();
         RecyclerView list = findViewById(R.id.studentlistfrag_list);
@@ -35,8 +34,14 @@ public class MainActivity extends Activity {
         adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                Log.d("TAG", "Row was clicked " + pos);
+                Intent intent = new Intent(StudentListActivity.this, StudentDetailsActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("id", pos); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
             }
         });
+
+//        findViewById(R.id.addNewStudentActionButton)
     }
 }
