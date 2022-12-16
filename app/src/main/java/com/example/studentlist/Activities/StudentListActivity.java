@@ -40,8 +40,8 @@ public class StudentListActivity extends Activity {
             public void onItemClick(int pos) {
                 Intent intent = new Intent(StudentListActivity.this, StudentDetailsActivity.class);
                 Bundle b = new Bundle();
-                b.putInt("id", pos); //Your id
-                intent.putExtras(b); //Put your id to your next Intent
+                b.putInt("pos", pos);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });

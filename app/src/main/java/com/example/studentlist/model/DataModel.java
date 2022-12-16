@@ -1,7 +1,8 @@
 package com.example.studentlist.model;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class DataModel {
     private static final DataModel _instance = new DataModel();
@@ -16,7 +17,7 @@ public class DataModel {
         }
     }
 
-    List<Student> data = new LinkedList<>();
+    Vector<Student> data = new Vector<>();
 
     public List<Student> getAllStudents() {
         return data;
@@ -24,6 +25,10 @@ public class DataModel {
 
     public void addStudent(Student st) {
         data.add(st);
+    }
+
+    public Student getStudentByPos(int pos) {
+        return data.get(pos);
     }
 
 
