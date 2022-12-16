@@ -31,5 +31,7 @@ public class DataModel {
         return data.get(pos);
     }
 
-
+    public void deleteStudent(int pos) {
+        data.remove(pos);
+    }
 }

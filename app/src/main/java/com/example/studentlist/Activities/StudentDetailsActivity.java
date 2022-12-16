@@ -29,6 +29,8 @@ public class StudentDetailsActivity extends Activity {
 
         Student st = DataModel.instance().getStudentByPos(pos);
 
+        Button editButton = findViewById(R.id.editButton);
+
         TextView nameTv = findViewById(R.id.nameTextView);
         TextView idTv = findViewById(R.id.idTextView);
         TextView phoneTv = findViewById(R.id.phoneTextView);
@@ -43,5 +45,12 @@ public class StudentDetailsActivity extends Activity {
         addressTv.setText("address: " + st.address);
         cb.setChecked(st.cb);
         cb.setEnabled(false);
+
+        editButton.setOnClickListener(view -> {
+            Intent intent = new Intent(StudentDetailsActivity.this, EditStudentActivity.class);
+            intent.putExtras(b);
+            startActivity(intent);
+            finish();
+        });
     }
 }
