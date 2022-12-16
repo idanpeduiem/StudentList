@@ -6,17 +6,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.example.studentlist.R;
 import com.example.studentlist.StudentRecyclerAdapter;
 import com.example.studentlist.model.DataModel;
 import com.example.studentlist.model.Student;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class StudentListActivity extends Activity {
 
     List<Student> data;
+    StudentRecyclerAdapter adapter;
+    static boolean loaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,7 @@ public class StudentListActivity extends Activity {
         RecyclerView list = findViewById(R.id.studentlistfrag_list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this));
-        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter(getLayoutInflater(),data);
+        adapter = new StudentRecyclerAdapter(getLayoutInflater(),data);
         list.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
@@ -40,7 +45,18 @@ public class StudentListActivity extends Activity {
                 startActivity(intent);
             }
         });
+        FloatingActionButton btn = findViewById(R.id.addNewStudentActionButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(StudentListActivity.this,NewStudentActivity.class));
+            }
+        });
+    }
 
-//        findViewById(R.id.addNewStudentActionButton)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        data = DataModel.instance().getAllStudents();
+        adapter.notifyDataSetChanged();
     }
 }
