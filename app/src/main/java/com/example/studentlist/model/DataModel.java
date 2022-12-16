@@ -12,7 +12,7 @@ public class DataModel {
 
     private DataModel() {
         for (int i = 0; i < 20; i++) {
-            this.addStudent(new Student("name " + i, "" + i, "", false));
+            this.addStudent(new Student("name " + i, "" + i, "", false, "phone" + i, "address" + i));
         }
     }
 
