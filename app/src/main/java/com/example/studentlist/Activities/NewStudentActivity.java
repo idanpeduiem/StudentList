@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -44,6 +45,12 @@ public class NewStudentActivity extends Activity {
                 Boolean cb = cbRef.isChecked();
 
                 DataModel.instance().addStudent(new Student(name,id,"",cb,phone,address));
+                finish();
+            }
+        });
+        ImageView backbtn = findViewById(R.id.backbtn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 finish();
             }
         });

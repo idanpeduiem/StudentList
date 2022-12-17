@@ -6,18 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Activities.EditStudentActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
         android:background="#C0C0C0"
-        android:text="Student Details"
-        android:textAlignment="viewStart"
-        android:textSize="34sp"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="35dp"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Student Details" />
+
+    <ImageButton
+        android:id="@+id/backbtn"
+        android:layout_width="67dp"
+        android:layout_height="58dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/backbtn"
+        android:background="?android:attr/selectableItemBackground"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -81,12 +91,11 @@
         android:id="@+id/imageView"
         android:layout_width="143dp"
         android:layout_height="140dp"
-        android:layout_marginTop="44dp"
         android:src="@drawable/avatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
         android:id="@+id/editButton"

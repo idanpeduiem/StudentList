@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.studentlist.R;
 import com.example.studentlist.StudentRecyclerAdapter;
@@ -49,6 +50,13 @@ public class StudentListActivity extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(StudentListActivity.this,NewStudentActivity.class));
+            }
+        });
+
+        ImageView backbtn = findViewById(R.id.backbtn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
             }
         });
     }
